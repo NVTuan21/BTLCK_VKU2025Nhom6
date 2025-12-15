@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+
+    app:startDestination="@id/dashboardFragment">
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.btlck_ltdd_nhom6.ui.fragment.DashboardFragment"
+        android:label="Trang Chủ Quản Lý Nhà Sách"
+        tools:layout="@layout/fragment_dashboard">
+
+        <action
+            android:id="@+id/action_dashboardFragment_to_bookListFragment"
+            app:destination="@id/bookListFragment" />
+
+        <action
+            android:id="@+id/action_dashboardFragment_to_saleFragment"
+            app:destination="@id/saleFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/bookListFragment"
+        android:name="com.example.btlck_ltdd_nhom6.ui.fragment.BookListFragment"
+        android:label="Quản Lý Danh Mục Sách"
+        tools:layout="@layout/fragment_book_list">
+
+        <action
+            android:id="@+id/action_bookListFragment_to_addEditBookFragment"
+            app:destination="@id/addEditBookFragment" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/addEditBookFragment"
+        android:name="com.example.btlck_ltdd_nhom6.ui.fragment.AddEditBookDialogFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_add_edit_book">
+
+        <argument
+            android:name="bookId"
+            app:argType="string"
+            android:defaultValue="new" />
+
+        <argument
+            android:name="title"
+            app:argType="string"
+            android:defaultValue="Thêm Sách Mới" />
+    </dialog>
+
+    <fragment
+        android:id="@+id/saleFragment"
+        android:name="com.example.btlck_ltdd_nhom6.ui.fragment.SaleFragment"
+        android:label="Tạo Hóa Đơn Bán Hàng"
+        tools:layout="@layout/fragment_sale" />
+
+</navigation>
