@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/text_view_cart_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/button_remove_item"
+        tools:text="Tên sách trong Giỏ hàng (x2)" />
+
+    <TextView
+        android:id="@+id/text_view_cart_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/text_view_cart_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/button_remove_item"
+        tools:text="Giá đơn vị: 150,000 VND" />
+
+    <ImageButton
+        android:id="@+id/button_remove_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Xóa mục khỏi giỏ hàng"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/layout_quantity_controls"
+        app:srcCompat="@android:drawable/ic_menu_delete"
+        app:tint="@color/design_default_color_error" />
+
+    <LinearLayout
+        android:id="@+id/layout_quantity_controls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/button_decrease_quantity"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:text="-"
+            android:textSize="18sp"
+            android:padding="0dp"
+            android:minWidth="0dp"/>
+
+        <TextView
+            android:id="@+id/text_view_cart_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            tools:text="2" />
+
+        <Button
+            android:id="@+id/button_increase_quantity"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:text="+"
+            android:textSize="18sp"
+            android:padding="0dp"
+            android:minWidth="0dp"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#EEEEEE"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/layout_quantity_controls"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

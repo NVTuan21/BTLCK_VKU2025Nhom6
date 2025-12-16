@@ -9,7 +9,7 @@ import com.example.btlck_ltdd_nhom6.data.dao.BookDao
 import com.example.btlck_ltdd_nhom6.data.dao.SaleDao
 import com.example.btlck_ltdd_nhom6.data.entity.Sale
 
-@Database(entities = [Book::class , Sale::class], version = 1, exportSchema = false)
+@Database(entities = [Book::class , Sale::class], version = 2, exportSchema = false) // <--- ĐÃ SỬA TỪ version = 1 THÀNH version = 2
 abstract class AppDatabase : RoomDatabase() {
 
     // Khai báo các DAO
@@ -27,6 +27,7 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "app_database" // Tên file database
                 )
+                    .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
                 instance

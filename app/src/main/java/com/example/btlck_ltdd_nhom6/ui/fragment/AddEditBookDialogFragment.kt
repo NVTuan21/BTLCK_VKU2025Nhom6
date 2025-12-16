@@ -29,7 +29,7 @@ class AddEditBookDialogFragment : DialogFragment() {
     private val viewModel: BookstoreViewModel by viewModels {
         val context = requireContext().applicationContext
         val database = AppDatabase.getDatabase(context)
-        val repository = BookstoreRepository(database.bookDao(), database.saleDao())
+        val repository = BookstoreRepository(database.bookDao(), database.saleDao(), database)
         BookstoreViewModelFactory(repository)
     }
 
@@ -87,7 +87,7 @@ class AddEditBookDialogFragment : DialogFragment() {
 
     private fun loadBookData(id: Int) {
         // Logic load data giữ nguyên
-        viewModel.getBookById(id).observe(viewLifecycleOwner) { book ->
+        viewModel.getBookDetails(id).observe(viewLifecycleOwner) { book ->
             book?.let {
                 binding.editTextTitle.setText(it.title)
                 binding.editTextAuthor.setText(it.author)
@@ -122,7 +122,7 @@ class AddEditBookDialogFragment : DialogFragment() {
 
         // Tạo đối tượng Book để lưu
         val bookToSave = Book(
-            id = currentBookId ?: 0,
+            bookId = currentBookId ?: 0,
             title = title,
             author = author,
             genre = "General",

@@ -21,7 +21,7 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
     private val viewModel: BookstoreViewModel by viewModels {
         val context = requireContext().applicationContext
         val database = AppDatabase.getDatabase(context)
-        val repository = BookstoreRepository(database.bookDao(), database.saleDao())
+        val repository = BookstoreRepository(bookDao = database.bookDao(), saleDao = database.saleDao(), database = database)
 
         BookstoreViewModelFactory(repository)
     }

@@ -24,4 +24,7 @@ interface SaleDao {
     @Transaction
     @Query("SELECT * FROM sale_table ORDER BY saleDate DESC")
     fun getSalesWithBookDetails(): Flow<List<BookAndSale>>
+
+    @Insert
+    suspend fun insertAllSales(sales: List<Sale>)
 }

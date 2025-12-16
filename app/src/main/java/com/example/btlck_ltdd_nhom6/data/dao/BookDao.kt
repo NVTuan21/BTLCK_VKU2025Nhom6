@@ -25,9 +25,15 @@ interface BookDao {
     fun getAllBooks(): Flow<List<Book>> // Sử dụng Flow để xử lý luồng dữ liệu theo kiến trúc hiện đại
 
     // R - Read (Lấy sách theo ID)
-    @Query("SELECT * FROM book_table WHERE id = :bookId")
+    @Query("SELECT * FROM book_table WHERE bookId = :bookId")
     fun getBookById(bookId: Int): Flow<Book?>
 
-    @Query("SELECT * FROM book_table WHERE id = :bookId")
+    @Query("SELECT * FROM book_table WHERE bookId = :bookId")
     suspend fun getBookForTransaction(bookId: Int): Book?
+
+    @Update
+    fun updateAll(booksToUpdate: MutableList<Book>)
+
+    @Query("SELECT * FROM book_table WHERE title LIKE '%' || :query || '%' OR author LIKE '%' || :query || '%'")
+    fun searchBooks(query: String): List<Book>
 }

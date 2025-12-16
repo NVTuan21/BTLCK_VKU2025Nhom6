@@ -17,7 +17,7 @@ data class BookAndSale(
         // Khóa ngoại trong bảng Sale (chứa id của sách)
         parentColumn = "bookId",
         // Khóa chính tương ứng trong bảng Book
-        entityColumn = "id"
+        entityColumn = "bookId"
     )
     // List này sẽ chứa cuốn sách được bán trong giao dịch này (nên chỉ có 1 phần tử)
     val bookDetails: List<Book>

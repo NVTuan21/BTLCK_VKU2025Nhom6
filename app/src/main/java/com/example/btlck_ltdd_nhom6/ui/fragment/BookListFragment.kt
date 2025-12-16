@@ -27,7 +27,7 @@ class BookListFragment : Fragment(R.layout.fragment_book_list) {
     private val viewModel: BookstoreViewModel by viewModels {
         val context = requireContext().applicationContext
         val database = AppDatabase.getDatabase(context)
-        val repository = BookstoreRepository(database.bookDao(), database.saleDao())
+        val repository = BookstoreRepository(bookDao = database.bookDao(), saleDao = database.saleDao(), database = database)
 
         BookstoreViewModelFactory(repository)
     }
@@ -54,7 +54,7 @@ class BookListFragment : Fragment(R.layout.fragment_book_list) {
         // 1. Adapter với logic click (điều hướng đến chỉnh sửa)
         bookAdapter = BookAdapter { book ->
             val action = BookListFragmentDirections.actionBookListFragmentToAddEditBookFragment(
-                bookId = book.id.toString(),
+                bookId = book.bookId.toString(),
                 title = "Chỉnh Sửa Sách"
             )
             findNavController().navigate(action)

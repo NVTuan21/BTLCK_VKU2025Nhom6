@@ -9,7 +9,7 @@ data class Book(
 
     // Đặt 'id' làm Khóa chính và tự động tăng
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+    val bookId: Int = 0,
 
     val title: String,
     val author: String,
